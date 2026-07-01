@@ -1,0 +1,964 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hotel Solar das Águas — Proposta de Site (Mockup)</title>
+<meta name="robots" content="noindex, nofollow">
+<style>
+  :root{
+    --verde: #163A2C;
+    --verde-escuro: #0F2A20;
+    --dourado: #D9A62E;
+    --dourado-claro: #EAC766;
+    --creme: #FBF6EA;
+    --creme-suave: #F3ECD9;
+    --texto-escuro: #1F2A22;
+    --sombra: rgba(15, 42, 32, 0.18);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: var(--creme);
+    color: var(--texto-escuro);
+    overflow-x: hidden;
+    width: 100%;
+  }
+
+  img, svg { max-width: 100%; display: block; }
+
+  .container{
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  a { text-decoration: none; color: inherit; }
+
+  /* ---------- FAIXA DE AVISO DE PROPOSTA ---------- */
+  .proposal-banner{
+    background: var(--dourado);
+    color: var(--verde-escuro);
+    text-align: center;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    padding: 8px 16px;
+    text-transform: uppercase;
+  }
+
+  /* ---------- HEADER ---------- */
+  header{
+    background: var(--verde);
+    color: var(--creme);
+    padding: 14px 0;
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    box-shadow: 0 2px 12px var(--sombra);
+  }
+
+  .nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+
+  .brand{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 700;
+    font-size: 1.05rem;
+    color: var(--creme);
+  }
+
+  .brand .logo-mark{ width: 38px; height: 38px; flex-shrink: 0; }
+
+  .nav-links{
+    display: flex;
+    gap: 22px;
+    font-size: 0.92rem;
+  }
+
+  .nav-links a{
+    opacity: 0.88;
+    transition: opacity 0.2s;
+  }
+  .nav-links a:hover{ opacity: 1; text-decoration: underline; text-underline-offset: 4px; }
+
+  .nav-cta{
+    background: var(--dourado);
+    color: var(--verde-escuro);
+    padding: 9px 18px;
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: 0.88rem;
+    white-space: nowrap;
+    transition: transform 0.15s, box-shadow 0.15s;
+  }
+  .nav-cta:hover{ transform: translateY(-1px); box-shadow: 0 4px 14px rgba(0,0,0,0.2); }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    background:
+      radial-gradient(ellipse at 50% -10%, rgba(217,166,46,0.25), transparent 55%),
+      linear-gradient(180deg, var(--verde) 0%, var(--verde-escuro) 100%);
+    color: var(--creme);
+    text-align: center;
+    padding: 70px 24px 90px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::after{
+    content: "";
+    position: absolute;
+    bottom: -60%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 900px;
+    height: 900px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(217,166,46,0.10), transparent 65%);
+    pointer-events: none;
+  }
+
+  .hero-logo{
+    width: 110px;
+    height: 110px;
+    margin: 0 auto 22px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero h1{
+    font-size: clamp(1.9rem, 5vw, 3rem);
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    margin-bottom: 12px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero .tagline{
+    font-family: Georgia, 'Times New Roman', serif;
+    font-style: italic;
+    font-size: clamp(1.1rem, 2.6vw, 1.5rem);
+    color: var(--dourado-claro);
+    margin-bottom: 22px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero p.lead{
+    max-width: 620px;
+    margin: 0 auto 34px;
+    font-size: 1.02rem;
+    line-height: 1.6;
+    color: rgba(251,246,234,0.88);
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-ctas{
+    display: flex;
+    gap: 14px;
+    justify-content: center;
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 1;
+  }
+
+  .btn{
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 26px;
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: 0.98rem;
+    transition: transform 0.15s, box-shadow 0.15s;
+  }
+
+  .btn-primary{
+    background: var(--dourado);
+    color: var(--verde-escuro);
+  }
+  .btn-primary:hover{ transform: translateY(-2px); box-shadow: 0 8px 20px rgba(217,166,46,0.35); }
+
+  .btn-outline{
+    background: transparent;
+    color: var(--creme);
+    border: 1.5px solid rgba(251,246,234,0.55);
+  }
+  .btn-outline:hover{ background: rgba(251,246,234,0.08); transform: translateY(-2px); }
+
+  /* ---------- ARGUMENTO CENTRAL ---------- */
+  .why{
+    background: var(--creme);
+    padding: 64px 24px;
+  }
+
+  .why-inner{
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .eyebrow{
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--dourado);
+    margin-bottom: 10px;
+  }
+
+  .why h2{
+    font-size: clamp(1.5rem, 3.4vw, 2.1rem);
+    color: var(--verde);
+    margin-bottom: 18px;
+    line-height: 1.3;
+  }
+
+  .why p{
+    font-size: 1.02rem;
+    line-height: 1.75;
+    color: #3B4B41;
+    max-width: 720px;
+    margin: 0 auto 18px;
+  }
+
+  .why-cards{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+    margin-top: 40px;
+    text-align: left;
+  }
+
+  .why-card{
+    background: var(--creme-suave);
+    border: 1px solid rgba(22,58,44,0.10);
+    border-radius: 14px;
+    padding: 24px;
+  }
+
+  .why-card .why-icon{
+    width: 30px;
+    height: 30px;
+    margin-bottom: 14px;
+  }
+
+  .why-card h3{
+    color: var(--verde);
+    font-size: 1.02rem;
+    margin-bottom: 8px;
+  }
+
+  .why-card p{
+    font-size: 0.92rem;
+    color: #4A5A50;
+    margin: 0;
+    max-width: none;
+  }
+
+  /* ---------- SEÇÃO GENÉRICA ---------- */
+  section.block{
+    padding: 64px 24px;
+  }
+
+  .section-head{
+    text-align: center;
+    max-width: 640px;
+    margin: 0 auto 42px;
+  }
+
+  .section-head h2{
+    font-size: clamp(1.5rem, 3.2vw, 2rem);
+    color: var(--verde);
+    margin-bottom: 10px;
+  }
+
+  .section-head p{
+    color: #4A5A50;
+    font-size: 0.98rem;
+    line-height: 1.6;
+  }
+
+  /* ---------- QUARTOS ---------- */
+  .rooms{ background: var(--verde); }
+  .rooms .section-head h2,
+  .rooms .section-head .eyebrow{ color: var(--creme); }
+  .rooms .section-head h2 { color: var(--creme); }
+  .rooms .section-head p{ color: rgba(251,246,234,0.75); }
+
+  .room-grid{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+  }
+
+  .room-card{
+    background: var(--creme);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.18);
+  }
+
+  .room-photo{
+    height: 170px;
+    background:
+      repeating-linear-gradient(135deg, rgba(217,166,46,0.18) 0 14px, rgba(217,166,46,0.08) 14px 28px),
+      linear-gradient(160deg, #E7DBB8, #D9CBA0);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 6px;
+    color: #7A6B3F;
+    text-align: center;
+  }
+
+  .room-photo .cam-icon{ width: 34px; height: 34px; opacity: 0.6; }
+  .room-photo span{
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    opacity: 0.75;
+  }
+
+  .room-body{ padding: 20px; }
+
+  .room-body h3{
+    color: var(--verde);
+    font-size: 1.1rem;
+    margin-bottom: 6px;
+  }
+
+  .room-body p{
+    font-size: 0.9rem;
+    color: #57604F;
+    line-height: 1.55;
+    margin-bottom: 14px;
+  }
+
+  .room-tags{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .room-tag{
+    background: rgba(22,58,44,0.08);
+    color: var(--verde);
+    font-size: 0.74rem;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 999px;
+  }
+
+  .rooms-note{
+    text-align: center;
+    color: rgba(251,246,234,0.6);
+    font-size: 0.82rem;
+    margin-top: 26px;
+    font-style: italic;
+  }
+
+  /* ---------- COMODIDADES ---------- */
+  .amenities{ background: var(--creme); }
+
+  .amenity-grid{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+
+  .amenity-item{
+    background: white;
+    border: 1px solid rgba(22,58,44,0.08);
+    border-radius: 14px;
+    padding: 22px 16px;
+    text-align: center;
+    transition: transform 0.15s, box-shadow 0.15s;
+  }
+  .amenity-item:hover{ transform: translateY(-3px); box-shadow: 0 10px 24px rgba(22,58,44,0.1); }
+
+  .amenity-item .a-icon{
+    width: 34px;
+    height: 34px;
+    margin: 0 auto 12px;
+    color: var(--dourado);
+  }
+
+  .amenity-item span{
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--verde);
+    line-height: 1.35;
+    display: block;
+  }
+
+  .amenities-footnote{
+    text-align: center;
+    margin-top: 30px;
+    font-size: 0.88rem;
+    color: #6B7A6E;
+  }
+  .amenities-footnote b{ color: var(--verde); }
+
+  /* ---------- DEPOIMENTO (RESERVADO) ---------- */
+  .testimonial{ background: var(--creme-suave); }
+
+  .testimonial-box{
+    max-width: 680px;
+    margin: 0 auto;
+    background: white;
+    border: 2px dashed var(--dourado);
+    border-radius: 18px;
+    padding: 42px 32px;
+    text-align: center;
+    position: relative;
+  }
+
+  .testimonial-box .quote-mark{
+    width: 40px;
+    height: 40px;
+    color: var(--dourado);
+    margin: 0 auto 16px;
+    opacity: 0.7;
+  }
+
+  .testimonial-box h3{
+    color: var(--verde);
+    font-size: 1.05rem;
+    margin-bottom: 10px;
+  }
+
+  .testimonial-box p{
+    color: #66756B;
+    font-size: 0.92rem;
+    line-height: 1.65;
+    max-width: 520px;
+    margin: 0 auto;
+  }
+
+  .testimonial-box .placeholder-tag{
+    display: inline-block;
+    margin-top: 18px;
+    background: rgba(217,166,46,0.15);
+    color: #8A6A16;
+    font-size: 0.74rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 6px 14px;
+    border-radius: 999px;
+  }
+
+  /* ---------- CONTATO ---------- */
+  .contact{
+    background: var(--verde);
+    color: var(--creme);
+  }
+
+  .contact .section-head h2{ color: var(--creme); }
+  .contact .section-head p{ color: rgba(251,246,234,0.75); }
+
+  .contact-grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+    align-items: stretch;
+  }
+
+  .contact-card{
+    background: rgba(251,246,234,0.06);
+    border: 1px solid rgba(251,246,234,0.15);
+    border-radius: 18px;
+    padding: 30px;
+  }
+
+  .contact-info-row{
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    margin-bottom: 22px;
+  }
+  .contact-info-row:last-child{ margin-bottom: 0; }
+
+  .contact-info-row .c-icon{
+    width: 24px;
+    height: 24px;
+    color: var(--dourado);
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .contact-info-row h4{
+    font-size: 0.82rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--dourado-claro);
+    margin-bottom: 4px;
+  }
+
+  .contact-info-row p, .contact-info-row a{
+    font-size: 0.98rem;
+    line-height: 1.5;
+    color: var(--creme);
+  }
+  .contact-info-row a:hover{ text-decoration: underline; }
+
+  .contact-card.whats{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 16px;
+    background: linear-gradient(160deg, rgba(217,166,46,0.16), rgba(217,166,46,0.04));
+  }
+
+  .contact-card.whats .wa-icon{
+    width: 52px;
+    height: 52px;
+    color: var(--dourado);
+  }
+
+  .contact-card.whats h3{
+    font-size: 1.2rem;
+  }
+
+  .contact-card.whats p{
+    color: rgba(251,246,234,0.75);
+    font-size: 0.92rem;
+    max-width: 320px;
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    background: var(--verde-escuro);
+    color: rgba(251,246,234,0.7);
+    padding: 30px 24px 100px;
+    text-align: center;
+    font-size: 0.85rem;
+  }
+
+  footer .disclaimer{
+    max-width: 640px;
+    margin: 0 auto 14px;
+    background: rgba(217,166,46,0.12);
+    border: 1px solid rgba(217,166,46,0.35);
+    color: var(--dourado-claro);
+    border-radius: 10px;
+    padding: 14px 18px;
+    font-weight: 600;
+    line-height: 1.55;
+  }
+
+  footer .foot-brand{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 8px;
+    color: var(--creme);
+    font-weight: 700;
+  }
+  footer .foot-brand .logo-mark{ width: 24px; height: 24px; }
+
+  /* ---------- WHATSAPP FLUTUANTE (DESKTOP) ---------- */
+  .wa-float{
+    position: fixed;
+    bottom: 26px;
+    right: 26px;
+    background: var(--dourado);
+    color: var(--verde-escuro);
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 10px 26px rgba(0,0,0,0.3);
+    z-index: 60;
+    transition: transform 0.15s;
+  }
+  .wa-float:hover{ transform: scale(1.08); }
+  .wa-float svg{ width: 28px; height: 28px; }
+
+  /* ---------- BARRA FIXA WHATSAPP (MOBILE) ---------- */
+  .wa-bar{
+    display: none;
+  }
+
+  /* ================= RESPONSIVE ================= */
+
+  @media (max-width: 860px){
+    .why-cards{ grid-template-columns: 1fr 1fr; }
+    .room-grid{ grid-template-columns: 1fr 1fr; }
+    .amenity-grid{ grid-template-columns: repeat(3, 1fr); }
+  }
+
+  @media (max-width: 560px){
+    .nav-links{ display: none; }
+    .nav-cta{ display: none; }
+
+    .hero{ padding: 52px 18px 64px; }
+    .hero-logo{ width: 84px; height: 84px; }
+
+    .hero-ctas{ flex-direction: column; align-items: stretch; }
+    .hero-ctas .btn{ justify-content: center; }
+
+    .why-cards{ grid-template-columns: 1fr; }
+    .room-grid{ grid-template-columns: 1fr; }
+    .amenity-grid{ grid-template-columns: 1fr 1fr; }
+    .contact-grid{ grid-template-columns: 1fr; }
+
+    section.block{ padding: 46px 18px; }
+    .why{ padding: 46px 18px; }
+
+    .testimonial-box{ padding: 32px 20px; }
+
+    /* remove floating circular button, replace with fixed bottom bar */
+    .wa-float{ display: none; }
+
+    .wa-bar{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      width: 100%;
+      background: var(--dourado);
+      color: var(--verde-escuro);
+      font-weight: 700;
+      font-size: 0.95rem;
+      padding: 14px 16px;
+      z-index: 60;
+      box-shadow: 0 -6px 18px rgba(0,0,0,0.2);
+    }
+    .wa-bar svg{ width: 22px; height: 22px; }
+
+    body{ padding-bottom: 62px; } /* espaço para a barra fixa não cobrir conteúdo */
+  }
+</style>
+</head>
+<body>
+
+<div class="proposal-banner">
+  Proposta de demonstração — não é o site oficial do Hotel Solar das Águas
+</div>
+
+<!-- ========== HEADER ========== -->
+<header>
+  <div class="container nav">
+    <div class="brand">
+      <svg class="logo-mark" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <g stroke="#D9A62E" stroke-width="4.5" stroke-linecap="round">
+          <line x1="50" y1="4"  x2="50" y2="16"/>
+          <line x1="79" y1="15" x2="71" y2="25"/>
+          <line x1="21" y1="15" x2="29" y2="25"/>
+          <line x1="91" y1="42" x2="79" y2="42"/>
+          <line x1="9"  y1="42" x2="21" y2="42"/>
+          <line x1="86" y1="24" x2="76" y2="30"/>
+          <line x1="14" y1="24" x2="24" y2="30"/>
+        </g>
+        <path d="M 22 46 A 28 28 0 0 1 78 46 Z" fill="#D9A62E"/>
+        <rect x="18" y="46" width="64" height="6" rx="3" fill="#FBF6EA"/>
+      </svg>
+      Solar das Águas
+    </div>
+    <nav class="nav-links">
+      <a href="#quartos">Quartos</a>
+      <a href="#comodidades">Comodidades</a>
+      <a href="#depoimentos">Hóspedes</a>
+      <a href="#contato">Contato</a>
+    </nav>
+    <a class="nav-cta" href="https://wa.me/5566981288620?text=Ol%C3%A1!%20Vi%20o%20site%20do%20Hotel%20Solar%20das%20%C3%81guas%20e%20gostaria%20de%20fazer%20uma%20reserva." target="_blank" rel="noopener">Reservar</a>
+  </div>
+</header>
+
+<!-- ========== HERO ========== -->
+<section class="hero">
+  <div class="container">
+    <svg class="hero-logo" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <g stroke="#D9A62E" stroke-width="4" stroke-linecap="round">
+        <line x1="50" y1="2"  x2="50" y2="16"/>
+        <line x1="83" y1="14" x2="74" y2="25"/>
+        <line x1="17" y1="14" x2="26" y2="25"/>
+        <line x1="96" y1="45" x2="82" y2="45"/>
+        <line x1="4"  y1="45" x2="18" y2="45"/>
+        <line x1="90" y1="26" x2="79" y2="33"/>
+        <line x1="10" y1="26" x2="21" y2="33"/>
+      </g>
+      <path d="M 16 49 A 34 34 0 0 1 84 49 Z" fill="#D9A62E"/>
+      <rect x="12" y="49" width="76" height="7" rx="3.5" fill="#FBF6EA"/>
+    </svg>
+
+    <h1>Hotel Solar das Águas</h1>
+    <p class="tagline">"Sinta-se em casa, longe de casa"</p>
+    <p class="lead">
+      Em Aripuanã (MT), na Av. Dardanelos, 340 — Centro. Atendimento familiar,
+      café da manhã elogiado por todo mundo que passa por aqui, e o cuidado de quem
+      trata cada hóspede como visita de casa.
+    </p>
+    <div class="hero-ctas">
+      <a class="btn btn-primary" href="https://wa.me/5566981288620?text=Ol%C3%A1!%20Vi%20o%20site%20do%20Hotel%20Solar%20das%20%C3%81guas%20e%20gostaria%20de%20fazer%20uma%20reserva." target="_blank" rel="noopener">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-1-.3-.1-.5-.1-.6.1-.2.3-.7 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.1.2-.3.3-.4.1-.2 0-.3 0-.5s-.6-1.5-.9-2c-.2-.5-.5-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3.1 4.9 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.7-.7 1.9-1.3.2-.7.2-1.2.2-1.3-.1-.1-.3-.2-.6-.3z"/><path d="M12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.6 1.4 5.1L2 22l5-1.3c1.4.8 3.1 1.3 4.9 1.3 5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3 .8.8-2.9-.2-.3C4.3 15 3.8 13.5 3.8 12c0-4.5 3.7-8.2 8.2-8.2s8.2 3.7 8.2 8.2-3.7 8.2-8.2 8.2z"/></svg>
+        Reservar pelo WhatsApp
+      </a>
+      <a class="btn btn-outline" href="#quartos">Ver quartos</a>
+    </div>
+  </div>
+</section>
+
+<!-- ========== ARGUMENTO CENTRAL ========== -->
+<section class="why">
+  <div class="why-inner">
+    <p class="eyebrow">Por que este site</p>
+    <h2>O hotel mais bem avaliado da região ainda é invisível pra quem procura no Google</h2>
+    <p>
+      Hoje, quem já conhece o Solar das Águas chega pelo boca a boca ou pelo Instagram
+      (@hotelsolardasaguas). Mas quem pesquisa <strong>"hotel em Aripuanã"</strong> sem
+      nunca ter ouvido falar do hotel simplesmente não encontra vocês — porque não existe
+      um site que apareça nessa busca. Esse visitante acaba reservando na concorrência,
+      mesmo o Solar das Águas tendo o atendimento e as avaliações para ser a primeira escolha.
+    </p>
+    <div class="why-cards">
+      <div class="why-card">
+        <svg class="why-icon" viewBox="0 0 24 24" fill="none" stroke="#D9A62E" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <h3>Sem site próprio</h3>
+        <p>Presença hoje limitada ao Instagram e ao Google Maps — quem não conhece o perfil, não encontra o hotel.</p>
+      </div>
+      <div class="why-card">
+        <svg class="why-icon" viewBox="0 0 24 24" fill="none" stroke="#D9A62E" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        <h3>Depende do boca a boca</h3>
+        <p>Reservas vêm de quem já foi indicado. Quem chega de fora da cidade sem indicação não tem como achar vocês.</p>
+      </div>
+      <div class="why-card">
+        <svg class="why-icon" viewBox="0 0 24 24" fill="none" stroke="#D9A62E" stroke-width="2"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+        <h3>Uma oportunidade parada</h3>
+        <p>Um site simples captura justamente quem pesquisa "hotel Aripuanã" no Google e nunca ouviu falar do Instagram.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== QUARTOS ========== -->
+<section class="block rooms" id="quartos">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow">Acomodações</p>
+      <h2>Tipos de quarto</h2>
+      <p>Estrutura ilustrativa para a proposta — fotos reais dos quartos entram na versão final do site.</p>
+    </div>
+    <div class="room-grid">
+      <div class="room-card">
+        <div class="room-photo">
+          <svg class="cam-icon" viewBox="0 0 24 24" fill="none" stroke="#7A6B3F" stroke-width="1.6"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+          <span>Foto real em breve</span>
+        </div>
+        <div class="room-body">
+          <h3>Quarto Casal</h3>
+          <p>Ideal para casais, com toda a estrutura de conforto do hotel.</p>
+          <div class="room-tags">
+            <span class="room-tag">Ar-condicionado</span>
+            <span class="room-tag">Frigobar</span>
+          </div>
+        </div>
+      </div>
+      <div class="room-card">
+        <div class="room-photo">
+          <svg class="cam-icon" viewBox="0 0 24 24" fill="none" stroke="#7A6B3F" stroke-width="1.6"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+          <span>Foto real em breve</span>
+        </div>
+        <div class="room-body">
+          <h3>Quarto Duplo</h3>
+          <p>Para quem viaja em dupla, a trabalho ou lazer, com boa acomodação.</p>
+          <div class="room-tags">
+            <span class="room-tag">TV</span>
+            <span class="room-tag">Chuveiro térmico</span>
+          </div>
+        </div>
+      </div>
+      <div class="room-card">
+        <div class="room-photo">
+          <svg class="cam-icon" viewBox="0 0 24 24" fill="none" stroke="#7A6B3F" stroke-width="1.6"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+          <span>Foto real em breve</span>
+        </div>
+        <div class="room-body">
+          <h3>Quarto Triplo / Família</h3>
+          <p>Mais espaço para famílias ou grupos que viajam juntos.</p>
+          <div class="room-tags">
+            <span class="room-tag">Ar-condicionado</span>
+            <span class="room-tag">TV</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p class="rooms-note">* Categorias de quarto ilustrativas para esta demonstração — a lista final é definida junto com o hotel.</p>
+  </div>
+</section>
+
+<!-- ========== COMODIDADES ========== -->
+<section class="block amenities" id="comodidades">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow">O que os hóspedes mais elogiam</p>
+      <h2>Comodidades</h2>
+      <p>Baseado no que aparece de verdade nas avaliações do hotel.</p>
+    </div>
+    <div class="amenity-grid">
+      <div class="amenity-item">
+        <svg class="a-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 12h20M2 12c0 0 1-3 3-3s3 3 5 3 3-3 5-3 3 3 5 3M2 18c0 0 1-3 3-3s3 3 5 3 3-3 5-3 3 3 5 3"/></svg>
+        <span>Piscina</span>
+      </div>
+      <div class="amenity-item">
+        <svg class="a-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+        <span>Área de churrasco</span>
+      </div>
+      <div class="amenity-item">
+        <svg class="a-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 3v18M3 8h14a3 3 0 0 1 3 3v0a3 3 0 0 1-3 3H3"/></svg>
+        <span>Café da manhã elogiado</span>
+      </div>
+      <div class="amenity-item">
+        <svg class="a-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="4" width="16" height="10" rx="1"/><path d="M2 20h20M9 17v3M15 17v3"/></svg>
+        <span>Ar-condicionado</span>
+      </div>
+      <div class="amenity-item">
+        <svg class="a-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="4" width="20" height="14" rx="2"/><path d="M8 21h8M12 18v3"/></svg>
+        <span>TV no quarto</span>
+      </div>
+      <div class="amenity-item">
+        <svg class="a-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M9 7h6M9 12h6"/></svg>
+        <span>Frigobar</span>
+      </div>
+      <div class="amenity-item">
+        <svg class="a-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 14a8 8 0 0 1 16 0v6H4z"/><path d="M9 3c0 2-2 2-2 4M15 3c0 2-2 2-2 4"/></svg>
+        <span>Chuveiro térmico</span>
+      </div>
+      <div class="amenity-item">
+        <svg class="a-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="12" cy="13" r="4"/><circle cx="7" cy="6" r="1"/></svg>
+        <span>Lavanderia disponível</span>
+      </div>
+    </div>
+    <p class="amenities-footnote">
+      E o que mais aparece nas avaliações: o cuidado pessoal de <b>Dona Beth</b> e <b>Dona Val</b>,
+      que fazem o hóspede se sentir em casa — literalmente.
+    </p>
+  </div>
+</section>
+
+<!-- ========== DEPOIMENTO RESERVADO ========== -->
+<section class="block testimonial" id="depoimentos">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow">Hóspedes</p>
+      <h2>O que dizem sobre o hotel</h2>
+    </div>
+    <div class="testimonial-box">
+      <svg class="quote-mark" viewBox="0 0 24 24" fill="currentColor"><path d="M9.3 6C6.4 7.6 4.5 10 4.5 13c0 2.2 1.5 3.7 3.3 3.7 1.7 0 3-1.3 3-3 0-1.6-1.1-2.8-2.6-3 .3-1.4 1.6-2.9 3.4-3.8L9.3 6zm9 0c-2.9 1.6-4.8 4-4.8 7 0 2.2 1.5 3.7 3.3 3.7 1.7 0 3-1.3 3-3 0-1.6-1.1-2.8-2.6-3 .3-1.4 1.6-2.9 3.4-3.8L18.3 6z"/></svg>
+      <h3>Espaço reservado para depoimento real</h3>
+      <p>
+        Aqui entra uma citação real de um hóspede, copiada das avaliações do Google Maps
+        ou do Instagram do hotel, com nome e (se possível) foto de perfil. Nenhum depoimento
+        foi inventado para esta demonstração — este espaço será preenchido com o texto
+        autorizado pelo hotel.
+      </p>
+      <span class="placeholder-tag">Aguardando depoimento real do hotel</span>
+    </div>
+  </div>
+</section>
+
+<!-- ========== CONTATO ========== -->
+<section class="block contact" id="contato">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow">Fale com a gente</p>
+      <h2>Contato e reservas</h2>
+      <p>Atendimento direto, do jeito que sempre foi — agora também para quem chega pelo Google.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-card">
+        <div class="contact-info-row">
+          <svg class="c-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 10c0 6-9 12-9 12s-9-6-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <div>
+            <h4>Endereço</h4>
+            <p>Av. Dardanelos, 340, Centro<br>Aripuanã - MT</p>
+          </div>
+        </div>
+        <div class="contact-info-row">
+          <svg class="c-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.6A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.7a2 2 0 0 1-.5 2.1L8 9.7a16 16 0 0 0 6.3 6.3l1.2-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.5 2.7.6a2 2 0 0 1 1.7 2.1z"/></svg>
+          <div>
+            <h4>Telefone / WhatsApp</h4>
+            <a href="tel:+5566981288620">(66) 98128-8620</a>
+          </div>
+        </div>
+        <div class="contact-info-row">
+          <svg class="c-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>
+          <div>
+            <h4>Instagram</h4>
+            <p>@hotelsolardasaguas</p>
+          </div>
+        </div>
+      </div>
+      <div class="contact-card whats">
+        <svg class="wa-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-1-.3-.1-.5-.1-.6.1-.2.3-.7 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.1.2-.3.3-.4.1-.2 0-.3 0-.5s-.6-1.5-.9-2c-.2-.5-.5-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3.1 4.9 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.7-.7 1.9-1.3.2-.7.2-1.2.2-1.3-.1-.1-.3-.2-.6-.3z"/><path d="M12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.6 1.4 5.1L2 22l5-1.3c1.4.8 3.1 1.3 4.9 1.3 5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3 .8.8-2.9-.2-.3C4.3 15 3.8 13.5 3.8 12c0-4.5 3.7-8.2 8.2-8.2s8.2 3.7 8.2 8.2-3.7 8.2-8.2 8.2z"/></svg>
+        <h3>Fale agora pelo WhatsApp</h3>
+        <p>Resposta rápida para reservas, dúvidas e disponibilidade de quartos.</p>
+        <a class="btn btn-primary" href="https://wa.me/5566981288620?text=Ol%C3%A1!%20Vi%20o%20site%20do%20Hotel%20Solar%20das%20%C3%81guas%20e%20gostaria%20de%20fazer%20uma%20reserva." target="_blank" rel="noopener">Chamar no WhatsApp</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== FOOTER ========== -->
+<footer>
+  <div class="foot-brand">
+    <svg class="logo-mark" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <g stroke="#D9A62E" stroke-width="4.5" stroke-linecap="round">
+        <line x1="50" y1="4"  x2="50" y2="16"/>
+        <line x1="79" y1="15" x2="71" y2="25"/>
+        <line x1="21" y1="15" x2="29" y2="25"/>
+        <line x1="91" y1="42" x2="79" y2="42"/>
+        <line x1="9"  y1="42" x2="21" y2="42"/>
+      </g>
+      <path d="M 22 46 A 28 28 0 0 1 78 46 Z" fill="#D9A62E"/>
+      <rect x="18" y="46" width="64" height="6" rx="3" fill="#FBF6EA"/>
+    </svg>
+    Hotel Solar das Águas
+  </div>
+  <div class="disclaimer">
+    ⚠ Este é um rascunho de demonstração criado como proposta comercial de site — não é o site oficial
+    do Hotel Solar das Águas, que atualmente não possui site próprio. Todos os dados de contato são reais;
+    o layout e os textos são material de apresentação para avaliação do hotel.
+  </div>
+  <p>© 2026 — Proposta de site para Hotel Solar das Águas · Aripuanã - MT</p>
+</footer>
+
+<!-- WhatsApp flutuante (desktop) -->
+<a class="wa-float" href="https://wa.me/5566981288620?text=Ol%C3%A1!%20Vi%20o%20site%20do%20Hotel%20Solar%20das%20%C3%81guas%20e%20gostaria%20de%20fazer%20uma%20reserva." target="_blank" rel="noopener" aria-label="Chamar no WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-1-.3-.1-.5-.1-.6.1-.2.3-.7 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.1.2-.3.3-.4.1-.2 0-.3 0-.5s-.6-1.5-.9-2c-.2-.5-.5-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3.1 4.9 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.7-.7 1.9-1.3.2-.7.2-1.2.2-1.3-.1-.1-.3-.2-.6-.3z"/><path d="M12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.6 1.4 5.1L2 22l5-1.3c1.4.8 3.1 1.3 4.9 1.3 5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3 .8.8-2.9-.2-.3C4.3 15 3.8 13.5 3.8 12c0-4.5 3.7-8.2 8.2-8.2s8.2 3.7 8.2 8.2-3.7 8.2-8.2 8.2z"/></svg>
+</a>
+
+<!-- Barra fixa WhatsApp (mobile) -->
+<a class="wa-bar" href="https://wa.me/5566981288620?text=Ol%C3%A1!%20Vi%20o%20site%20do%20Hotel%20Solar%20das%20%C3%81guas%20e%20gostaria%20de%20fazer%20uma%20reserva." target="_blank" rel="noopener">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-1-.3-.1-.5-.1-.6.1-.2.3-.7 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.1.2-.3.3-.4.1-.2 0-.3 0-.5s-.6-1.5-.9-2c-.2-.5-.5-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3.1 4.9 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.7-.7 1.9-1.3.2-.7.2-1.2.2-1.3-.1-.1-.3-.2-.6-.3z"/><path d="M12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.6 1.4 5.1L2 22l5-1.3c1.4.8 3.1 1.3 4.9 1.3 5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3 .8.8-2.9-.2-.3C4.3 15 3.8 13.5 3.8 12c0-4.5 3.7-8.2 8.2-8.2s8.2 3.7 8.2 8.2-3.7 8.2-8.2 8.2z"/></svg>
+  Chamar no WhatsApp
+</a>
+
+</body>
+</html>
